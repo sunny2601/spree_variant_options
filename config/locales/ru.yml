@@ -1,0 +1,8 @@
+ru:
+  spree:
+    preview: Превью
+    attach: Вложение
+    detach_image: Удалить картинку
+    select_a: "%{name}: "
+    variant_options_select: Выберите вариант
+    one_option_per_type_must_be_selected: Одна опция на тип может быть выбрана
