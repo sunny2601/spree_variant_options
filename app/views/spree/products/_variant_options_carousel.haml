@@ -1,0 +1,23 @@
+- first = true
+
+.carousel.slide.variant-options-carousel{'data-interval' => '0', id: 'carousel'+index.to_s}
+  / Wrapper for slides
+  .carousel-inner{:role => "listbox"}
+    - values.sort_by(&:position).each do |value|
+      - classes = ["option-value item"]
+      - unless (variants = @product.variants_for_option_value(value)).empty?
+        - classes << ( variants.any? { |v| v.in_stock? } ? "in-stock" : "out-of-stock" ) if index == 0
+        - classes << 'with-image' if value.has_image?
+        
+        .item{ class: if first then first = false; 'active' end }= link_to(value.has_image? ? image_tag(value.image.url(:small), 
+          :alt => value.presentation) : content_tag(:span, value.presentation), "#", :title => value.presentation, :class => classes.join(" "), :rel => "#{type.id}-#{value.id}")
+        
+
+        
+
+  %a.prev.carousel-control{"data-slide" => "prev", :href => "#carousel"+index.to_s, :role => "button"}
+    %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+    %span.sr-only Previous
+  %a.next.carousel-control{"data-slide" => "next", :href => "#carousel"+index.to_s, :role => "button"}
+    %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+    %span.sr-only Next

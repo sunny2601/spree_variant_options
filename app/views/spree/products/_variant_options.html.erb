@@ -9,17 +9,7 @@
           <%= link_to "", "#clear", :class => "icon-remove clear-button clear-index-#{index}" %>
         </h6>
 
-        <ul class="variant-option-values list-inline">
-        <% values.sort_by(&:position).each do |value| %>
-          <% classes = ["option-value"] %>
-          <% unless (variants = @product.variants_for_option_value(value)).empty? %>
-            <% classes << ( variants.any? { |v| v.in_stock? } ? "in-stock" : "out-of-stock" ) if index == 0 %>
-            <% classes << 'with-image' if value.has_image? %>
-            <li><%= link_to value.has_image? ? image_tag(value.image.url, :alt => value.presentation) : content_tag(:span, value.presentation), "#", :title => value.presentation, :class => classes.join(" "), :rel => "#{type.id}-#{value.id}" %></li>
-          <% end %>
-        <% end %>
-          <li class="clear"></li>
-        </ul>
+        <%= render partial: 'variant_options_carousel', locals: {values: values, index: index, type: type}%>
       </div>
       <% index += 1 %>
     <% end %>
