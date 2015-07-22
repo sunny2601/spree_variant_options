@@ -54,7 +54,12 @@ function VariantOptions(params) {
 
 
   function init() {
-    divs = $('#product-variants .variant-options');
+    if(params['product']){
+      divs = $('.product-variants-'+params['product']);
+      console.log(divs);
+    }else{
+      divs = $('#product-variants .variant-options');
+    }
     disable(divs.find('a.option-value').addClass('locked'));
     update();
     enable(parent.find('a.option-value'));
