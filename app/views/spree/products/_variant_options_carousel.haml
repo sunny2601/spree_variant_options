@@ -1,6 +1,6 @@
 - first = true
-
-.carousel.slide.variant-options-carousel{'data-interval' => '0', id: 'carousel'+index.to_s}
+-#.variant-options-carousel
+.carousel.slide{'data-interval' => '0', id: 'carousel'+index.to_s}
   / Wrapper for slides
   .carousel-inner{:role => "listbox"}
     - values.sort_by(&:position).each do |value|

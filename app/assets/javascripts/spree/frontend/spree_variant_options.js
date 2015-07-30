@@ -5,6 +5,6 @@
 jQuery(function($){
   $('.variant-options-carousel').on('slid.bs.carousel', function () {
     $this = $(this);
-    $this.find('.active.item a').click();
+    //$this.find('.active.item a').click();
   });
 });
